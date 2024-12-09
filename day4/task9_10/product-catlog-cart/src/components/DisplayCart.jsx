@@ -1,14 +1,15 @@
 import React from 'react'
 import { Header } from './Header'
 import { useSelector,useDispatch } from 'react-redux'
-import { removeFromCart } from '../redux/slice/cartSlice'
+import { removeFromCart,calculateTotalPrice } from '../redux/slice/cartSlice'
 export const DisplayCart = () => {
 
-    const { cartItem } = useSelector((state) => state.cart);
+    const { cartItem,totalPrice } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
     const removeCartItem = (id)=>{
         dispatch(removeFromCart(id))
+        dispatch(calculateTotalPrice())
     }
 
     return (
@@ -28,10 +29,17 @@ export const DisplayCart = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 ))
             }
+            <div className='container'>
+            <div className='card shadow-lg'>
+           <div className='card-footer '>
+              <h3>Total Price : {totalPrice}</h3>  
+           </div>
+            </div>
+            </div>
         </>
     )
 }

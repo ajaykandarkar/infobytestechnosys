@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Card.css";
 import {useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/slice/cartSlice";
+import { addToCart, removeFromCart,calculateTotalPrice } from "../redux/slice/cartSlice";
 
 export const Card = ({ title, price, image, rating, id }) => {
   const [isInCart, setIsInCart] = useState(false); 
@@ -10,8 +10,10 @@ export const Card = ({ title, price, image, rating, id }) => {
   const handleCartAction = () => {
     if (!isInCart) {
       dispatch(addToCart({ id, title, price, image, rating })); 
+      dispatch(calculateTotalPrice())
     } else {
       dispatch(removeFromCart(id)); 
+      dispatch(calculateTotalPrice())
     }
     setIsInCart(!isInCart); 
   };
