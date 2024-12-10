@@ -36,7 +36,7 @@ export const DisplayCart = () => {
             <div className='container'>
             <div className='card shadow-lg'>
            <div className='card-footer '>
-              <h3>Total Price : {totalPrice}</h3>  
+              <h3>Total Price : ${totalPrice}</h3>  
            </div>
             </div>
             </div>

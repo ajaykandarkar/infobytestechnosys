@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductData } from "../redux/slice/productDataSlice";
 import { Card } from '../components/Card';
@@ -8,11 +8,11 @@ import { Loder } from '../components/Loder';
 export const ProductCard = () => {
   const dispatch = useDispatch();
   const { products, loading } = useSelector((state) => state.productData);
-
   useEffect(() => {
-    
+    if (products.length === 0) {
       dispatch(fetchProductData());
-  }, []);
+    }
+  }, [dispatch,products.length]);
 
   if (loading) {
     return (

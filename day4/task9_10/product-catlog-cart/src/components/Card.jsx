@@ -23,11 +23,7 @@ export const Card = ({ title, price, image, rating, id }) => {
       <img
         src={image}
         className="card-img-top img-fluid"
-        style={{
-          objectFit: "cover",
-          width: "100%",
-          display: "block",
-        }}
+        style={{height:"173x", width:"300px"}}
         alt={title}
       />
       <div className="card-body">

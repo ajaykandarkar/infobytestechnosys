@@ -8,7 +8,7 @@ export const Header = () => {
         navigate("/cart")
     }
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg rounded-pill m-4 p-3">
+        <nav className="navbar navbar-expand-lg navbar navbar-light rounded-pill m-4 p-3 sticky-top" style={{backgroundColor:"#36C2CE",boxShadow: "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px"}} >
             <div className="container-fluid">
                 <a className="navbar-brand fs-6 fw-bolder" href="#">
                     Navbar
@@ -59,7 +59,7 @@ export const Header = () => {
                     <div className="d-flex align-items-center">
                         <button
                             type="button"
-                            className=" position-relative text-white text-decoration-none me-3"
+                            className=" position-relative  text-decoration-none me-3"
                             style={{ background: "none", border: "none" }}
                             onClick={navigateToCart}
                         >
