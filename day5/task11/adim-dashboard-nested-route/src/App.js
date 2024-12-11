@@ -10,7 +10,7 @@ function App() {
     Admin: 'admin',
   };
 
-  const Current_user = Users.Public; 
+  const Current_user = Users.Admin; 
   return (
     <>
       <Navbar Current_user={Current_user} />

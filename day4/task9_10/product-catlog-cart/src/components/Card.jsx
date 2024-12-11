@@ -1,21 +1,17 @@
-import { useState } from "react";
 import "./Card.css";
-import {useDispatch } from "react-redux";
+import {useDispatch,useSelector } from "react-redux";
 import { addToCart, removeFromCart,calculateTotalPrice } from "../redux/slice/cartSlice";
 
 export const Card = ({ title, price, image, rating, id }) => {
-  const [isInCart, setIsInCart] = useState(false); 
   const dispatch = useDispatch();
-
+  const toggleCartBtn = useSelector((state) => state.cart.cartToggleStatus[id] ?? true);
   const handleCartAction = () => {
-    if (!isInCart) {
-      dispatch(addToCart({ id, title, price, image, rating })); 
-      dispatch(calculateTotalPrice())
+    if (toggleCartBtn) {
+      dispatch(addToCart({ title, price, image, rating, id}));
     } else {
-      dispatch(removeFromCart(id)); 
-      dispatch(calculateTotalPrice())
+      dispatch(removeFromCart(id));
     }
-    setIsInCart(!isInCart); 
+    dispatch(calculateTotalPrice())
   };
 
   return (
@@ -34,9 +30,9 @@ export const Card = ({ title, price, image, rating, id }) => {
         </p>
         <button
           onClick={handleCartAction}
-          className={`btn ${isInCart ? "btn-danger" : "btn-primary"}`}
+          className={`btn ${toggleCartBtn ? 'btn-primary' : 'btn-danger'}`}
         >
-          {isInCart ? "Remove from Cart" : "Add to Cart"}
+         {toggleCartBtn ? 'Add to Cart' : 'Remove'}
         </button>
       </div>
     </div>
